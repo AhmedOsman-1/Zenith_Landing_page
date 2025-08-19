@@ -13,7 +13,7 @@ import {
 import { useRef } from "react";
 import Link from "next/link";
 
-export const Hero = () => {
+const Hero = () => {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -39,8 +39,8 @@ export const Hero = () => {
               successes.
             </p>
             <div className="flex gap-6 items-center mt-[30px]">
-              <Link href="/contact" className="btn">Get for free</Link>
-              <Link href="/pricing" className="btn-text text-black gap-1">
+              <Link href="/contact" className="btn rounded-lg">Get for free</Link>
+              <Link href="/pricing" className="btn-text text-black gap-1 rounded-lg">
                 <span>Learn more</span>
                 <ArrowIcon className="h-5 w-5" />
               </Link>
@@ -87,3 +87,4 @@ export const Hero = () => {
     </section>
   );
 };
+export default Hero;

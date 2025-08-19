@@ -1,4 +1,4 @@
-import { Testimonials } from '@/sections/Testimonials'
+import Testimonials from '@/sections/Testimonials'
 import React from 'react'
 
 const TestimonialPage = () => {

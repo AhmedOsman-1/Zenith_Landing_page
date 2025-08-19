@@ -1,9 +1,11 @@
 "use client"; // Must for client components
-import React from "react";
+
 import Pricing from "@/sections/Pricing";
+import React from "react";
+
 
 const page = () => {
-  return <Pricing />;
+  return <Pricing />
 };
 
 export default page;

@@ -8,7 +8,7 @@ import apexLogo from "@/assets/logo-apex.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export const LogoTicker = () => {
+ const LogoTicker = () => {
   return (
     <div className="py-8 md:py-12 bg-white">
       <div className="container">
@@ -93,3 +93,4 @@ export const LogoTicker = () => {
     </div>
   );
 };
+export default LogoTicker;

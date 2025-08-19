@@ -7,7 +7,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-export const ProductShowcase = () => {
+const ProductShowcase = () => {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -67,3 +67,4 @@ export const ProductShowcase = () => {
         </section>
     );
 };
+export default ProductShowcase

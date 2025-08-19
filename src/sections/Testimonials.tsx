@@ -69,7 +69,7 @@ const TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({ className, test
   </div>
 );
 
-export const Testimonials: React.FC = () => (
+const Testimonials: React.FC = () => (
   <section className="bg-gray-50 dark:bg-gray-900 transition-colors duration-300 py-24">
     <div className="container mx-auto px-6">
       <div className="flex justify-center">
@@ -80,7 +80,7 @@ export const Testimonials: React.FC = () => (
         From intuitive design to powerful features, our app has become an essential tool for users around the world.
       </p>
 
-      <div className="flex justify-center gap-6 mt-10 max-h-[738px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+      <div className="flex justify-center gap-6 mt-10 max-h-[700px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
         <TestimonialsColumn testimonials={firstColumn} duration={25} />
         <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={20} />
         <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:flex" duration={17} />
@@ -88,3 +88,4 @@ export const Testimonials: React.FC = () => (
     </div>
   </section>
 );
+export default Testimonials;
