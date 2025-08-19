@@ -1,5 +1,5 @@
 'use client';
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { FaCheck } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
@@ -36,27 +36,38 @@ const pricingTiers = [
 ];
 
 const Pricing = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="py-24 bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header */}
-        <header className="max-w-2xl mx-auto text-center mb-16">
+        <motion.header
+          initial={reduceMotion ? {} : { opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-2xl mx-auto text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
             Pricing
           </h2>
           <p className="mt-4 text-gray-600 dark:text-gray-300 text-lg md:text-xl">
             Free forever. Upgrade for unlimited tasks, better security, and exclusive features.
           </p>
-        </header>
+        </motion.header>
 
         {/* Pricing Cards */}
-        <div className="flex flex-col gap-10 items-center lg:flex-row lg:justify-center lg:gap-8">
+        <motion.div
+          className="flex flex-col gap-10 items-center lg:flex-row lg:justify-center lg:gap-8"
+          initial={reduceMotion ? {} : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: reduceMotion ? 0 : 0.15 }}
+        >
           {pricingTiers.map(({ id, title, monthlyPrice, buttonText, popular, inverse, subtitle, features }) => {
             const isPro = inverse === true;
             const isFree = title === "Free";
             const isBusiness = title === "Business";
 
-            // Card styling
             const cardClasses = twMerge(
               "relative max-w-xs w-full rounded-3xl p-10 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl shadow-lg",
               isFree
@@ -66,7 +77,6 @@ const Pricing = () => {
                 : "bg-gradient-to-r from-purple-700 via-pink-700 to-red-700 text-white shadow-lg border border-gray-600"
             );
 
-            // Button styling
             const buttonClasses = twMerge(
               "mt-8 block w-full rounded-full py-3 font-semibold text-center text-sm transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 shadow-md",
               isPro
@@ -77,7 +87,15 @@ const Pricing = () => {
             );
 
             return (
-              <article key={id} className={cardClasses}>
+              <motion.article
+                key={id}
+                layout
+                whileHover={reduceMotion ? {} : { scale: 1.03 }}
+                initial={reduceMotion ? {} : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
+                className={cardClasses}
+              >
                 {isPro && (
                   <div
                     className="absolute top-0 left-6 right-6 h-1 rounded-full"
@@ -91,16 +109,13 @@ const Pricing = () => {
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-bold">{title}</h3>
                   {popular && (
-                    <div className="inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20">
-                      <motion.span
-                        className="bg-[linear-gradient(to_right,#dd7ddf,#e1cd86,#bbcb92,#71c2ef,#3bffff,#dd7ddf)] text-transparent bg-clip-text font-medium"
-                        style={{ backgroundSize: "200% 100%", backgroundPosition: "0% 100%" }}
-                        animate={{ backgroundPosition: ["0% -50%", "-100% -20%"] }}
-                        transition={{ repeat: Infinity, repeatType: "loop", duration: 3, ease: "linear" }}
-                      >
-                        Popular
-                      </motion.span>
-                    </div>
+                    <motion.div
+                      className="inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20"
+                      animate={{ opacity: [0.6, 1, 0.6] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    >
+                      Popular
+                    </motion.div>
                   )}
                 </div>
 
@@ -108,9 +123,7 @@ const Pricing = () => {
                   <p className={twMerge(
                     "mt-2 text-sm italic",
                     isFree ? "text-gray-700 dark:text-gray-300" : "text-gray-200 dark:text-gray-300"
-                  )}>
-                    {subtitle}
-                  </p>
+                  )}>{subtitle}</p>
                 )}
 
                 <div className="flex items-baseline gap-1 mt-8">
@@ -128,9 +141,7 @@ const Pricing = () => {
                   </span>
                 </div>
 
-                <Link href="/contact" className={buttonClasses}>
-                  {buttonText}
-                </Link>
+                <Link href="/contact" className={buttonClasses}>{buttonText}</Link>
 
                 <ul className="flex flex-col gap-5 mt-8">
                   {features.map((feature) => (
@@ -143,14 +154,13 @@ const Pricing = () => {
                     </li>
                   ))}
                 </ul>
-              </article>
+              </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-
-export default Pricing
+export default Pricing;

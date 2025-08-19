@@ -4,9 +4,10 @@ import LogoTicker from "@/sections/LogoTicker";
 import dynamic from "next/dynamic";
 import Skeleton from "@/components/Skeleton";
 
-// Immediate render
-const Hero = dynamic(() => import("@/sections/Hero"), { ssr: true });
+// Hero will render immediately (SSR by default)
+const Hero = dynamic(() => import("@/sections/Hero"));
 
+// Lazy load with skeletons
 const ProductShowcase = dynamic(() => import("@/sections/ProductShowcase"), {
   ssr: false,
   loading: () => <Skeleton className="h-64 py-10 container mx-auto" />,

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zenith-landing-page-pi.vercel.app
