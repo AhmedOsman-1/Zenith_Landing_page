@@ -34,7 +34,6 @@ const Features = () => {
       <div className="container mx-auto px-6 max-w-6xl text-center">
         {/* Heading */}
         <motion.h2
-          fetchpriority="high"
           initial={reduceMotion ? {} : { opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
