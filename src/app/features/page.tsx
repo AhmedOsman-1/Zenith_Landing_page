@@ -1,11 +1,12 @@
 
-import { Features } from '@/components/Features'
+
+import Features from '@/components/Features'
 import React from 'react'
 
 const FeaturesPage = () => {
   return (
     <div>
-      <Features />
+    <Features />
     </div>
   )
 }
