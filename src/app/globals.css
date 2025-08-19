@@ -1,0 +1,66 @@
+/* global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* All buttons - smaller size & modern feel */
+  .btn,
+  .btn-primary,
+  .btn-text {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 
+           font-semibold text-base transition-all duration-300 transform
+           shadow-md active:scale-95;
+  }
+
+  /* Main gradient button */
+  .btn {
+    @apply text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
+           hover:opacity-95 hover:scale-105 hover:shadow-lg;
+  }
+
+  /* Solid primary button */
+  .btn-primary {
+    @apply bg-black text-white hover:bg-gray-900 hover:scale-105 hover:shadow-lg;
+  }
+
+  /* Secondary text button with subtle background and gradient text effect */
+  .btn-text {
+    @apply bg-white/10 text-indigo-600 border border-indigo-100
+           hover:bg-indigo-50 hover:text-black hover:border-indigo-300
+           shadow-sm hover:shadow-md hover:scale-105;
+  }
+
+  /* Logo ticker image */
+  .logo-ticker-image {
+    @apply h-8 w-auto;
+  }
+
+  /* Tag / badge component */
+  .tag {
+    @apply text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg tracking-tight 
+           bg-white/20 backdrop-blur-sm;
+  }
+
+  /* Section titles */
+  .section-title {
+    @apply text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter 
+           bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text;
+  }
+
+  /* Section description */
+  .section-description {
+    @apply text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E];
+  }
+
+  /* Section heading wrapper */
+  .section-heading {
+    @apply max-w-[540px] mx-auto;
+  }
+
+  /* Card component - soft shadow, modern */
+  .card {
+    @apply p-10 border border-[#222222]/10 rounded-2xl shadow-md max-w-xs w-full 
+           transition-all duration-300 hover:shadow-xl hover:scale-[1.02] bg-white;
+  }
+}
